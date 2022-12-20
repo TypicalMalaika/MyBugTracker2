@@ -1,0 +1,48 @@
+﻿@page
+@model MyBugTracker.Pages.Bugs.CreateBugModel
+@{
+}
+
+<br>
+<h2>New Bug</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class="alert alert-warning alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert" aria-label="close">&times;</button>
+        <strong>@Model.errorMessage</strong>
+    </div>
+}
+
+<form method="POST">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Title</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="Title" value="@Model.bugInfo.title">
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Description</label>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" name="Description" value="@Model.bugInfo.description">
+        </div>
+    </div>
+=    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Assigned To</label>
+        <div class="col-sm-6">
+            <select name="assigned" class="form-control" value="" asp-items="@(new SelectList(Model.displayData,"name","name"))">
+                <option selected disabled>--Select Staff--</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary btn-block" href="/" role="button">Cancel</a>
+        </div>
+    </div>
+</form>

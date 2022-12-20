@@ -1,0 +1,40 @@
+﻿@page
+@model MyBugTracker.Pages.Bugs.IndexModel
+@{
+}
+
+<br>
+<h2>Bug List</h2>
+<a class="btn btn-primary btn-sm" href="/Bugs/CreateBug">New Bug</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Assigned To</th>
+            <th>Created At</th>
+            <th>Action</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.listBugs)
+        {
+            <tr>
+                <td>@item.id</td>
+                <td>@item.title</td>
+                <td>@item.description</td>
+                <td>@item.assigned</td> <!--come back to this-->
+                <td>@item.created_at</td> 
+
+
+                <td>
+                    <a class="btn btn-primary btn-sm" href="/Bugs/EditBugs?id=@item.id">Edit</a>
+                    <a class="btn btn-success btn-sm" href="/Bugs/ResolveBugs?id=@item.id">Resolve</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
